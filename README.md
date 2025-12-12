@@ -217,6 +217,16 @@ Why
 Deterministic first-hop requires collision avoidance.
 Ignoring existing web conventions introduces ambiguity and breaks resolution.
 
+DFH does not ban other TLDs
+
+DFH does not block innovation
+
+DFH does not mandate .com
+
+It simply reflects this rule:
+
+The semantic root should live on the same domain that already represents the entity to the world.
+
 3.4 Fragmenting the Pillars (Governance Rule)
 
 The DFH ecosystem relies on stable, recognizable roots:
