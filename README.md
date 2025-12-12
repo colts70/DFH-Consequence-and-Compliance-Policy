@@ -1,342 +1,350 @@
-# DFH-Consequence-and-Compliance-Policy
-Global Enforcement Framework for the Semantic Stack &amp; Deterministic First-Hop (DFH)* 
-# DFH-Semantic-Stack-Compliance-And-Consequence-Model
+DFH-Consequence-and-Compliance-Policy
+Global Enforcement Framework for the Semantic Stack & Deterministic First-Hop (DFH)
 
-**Status:** Open Specification  
-**Version:** 1.0.0  
-**License:** MIT  
+Status: Open Specification
+Version: 1.0.0
+License: MIT
 
-This repository defines the **official compliance and consequence model** for the DFH Semantic Stack.
+This repository defines the compliance, validation, and consequence model for the DFH Semantic Stack.
 
-- **Non-criminal**: No legal or criminal penalties.  
-- **Protocol-level only**: The “consequences” are what happens when systems can no longer trust or resolve your stack.  
-- **Deterministic**: If you break the shape, the system ignores you.  
+Non-criminal — no legal, financial, or punitive enforcement
 
-DFH / Semantic Stack only works if **everyone plays by the same structural rules**.
+Protocol-level only — consequences emerge from loss of trust and resolution
 
----
+Deterministic — if the required shape is broken, the system must ignore it
 
-## 0. Scope
+DFH / Semantic Stack only functions if all participants follow the same structural contract.
+
+0. Scope
 
 These rules apply to any implementation of:
 
-- The **Semantic Stack** concept  
-- The **DFH (Deterministic First-Hop)** mechanism  
-- The `/ .well-known / stack` descriptor  
-- The Five Anchors: `type`, `entity`, `url`, `sitemap`, `canonical`  
-- Any DFH-aware tooling (validators, installers, generators)  
-- Any topic-level or domain-level “semantic roots” built on this spec  
+The Semantic Stack concept
 
-This document tells you:
+The DFH (Deterministic First-Hop) mechanism
 
-1. **What you MUST do** (compliance).  
-2. **What happens if you don’t** (consequences).  
-3. **How the whole system can collapse if rules are widely broken**.  
+The /.well-known/stack descriptor
 
----
+The Five Anchors: type, entity, url, sitemap, canonical
 
-## 1. Hard Requirements (Compliance Contract)
+DFH-aware tooling (validators, generators, installers)
 
-To be considered **DFH / Semantic Stack compliant**, an implementation MUST:
+Domain-level or topic-level semantic roots built on this specification
 
-1. **Publish a stack descriptor** at:
+This document defines:
 
-   ```text
-   /.well-known/stack
-Expose exactly these Five Anchors, spelled exactly as follows:
+Mandatory compliance requirements
 
-json
-Copy code
+Deterministic consequences of non-compliance
+
+Failure modes at both domain and ecosystem scale
+
+1. Hard Requirements (Compliance Contract)
+
+To be considered DFH / Semantic Stack compliant, an implementation MUST satisfy all of the following.
+
+1.1 Stack Descriptor Location
+
+A valid DFH stack descriptor MUST be published at:
+
+/.well-known/stack
+
+
+The descriptor MUST be a valid JSON-LD document.
+
+1.2 Required Anchors (Normative)
+
+The top-level object MUST expose exactly the following five anchors, spelled exactly as shown:
+
 {
-  "type":     "…",
-  "entity":   "…",
-  "url":      "…",
-  "sitemap":  "…",
-  "canonical":"…"
+  "type":      "…",
+  "entity":    "…",
+  "url":       "…",
+  "sitemap":   "…",
+  "canonical": "…"
 }
-Use a canonical, globally recognizable TLD
 
-Default: .com for global topic ownership.
 
-Legacy exceptions (very rare) must be documented and justified (e.g., long-established non-.com brands deeply bound to a specific TLD).
+Keys are case-sensitive
 
-Keep the JSON-LD shape stable
+Anchors MUST be top-level
 
-Same keys
+Anchors MUST NOT be renamed, aliased, or nested
 
-Same structure
+If any required anchor is missing, renamed, or structurally altered, the stack is non-compliant.
 
-Valid JSON-LD document
+1.3 Structural Stability
 
-Not fork or rename the core concepts
+A compliant stack MUST maintain:
 
-Do not rename DFH, the Five Anchors, or the core pillars.
+Stable key names
 
-Do not create “DFH-but-different” competing protocols.
+Stable document shape
 
-If you break any of these, you are out of spec.
+Valid JSON-LD semantics
 
-2. Consequence Model (Non-Criminal, Protocol-Only)
-The system does not punish you.
-There is no central authority, no legal enforcement, no “DFH police”.
+The stack MUST NOT:
 
-Instead, the protocol simply stops trusting you.
+Reorder anchors into nested objects
+
+Introduce incompatible schema variations
+
+Mix unrelated or conflicting semantic data
+
+Determinism requires predictable structure.
+
+1.4 Naming & Protocol Integrity
+
+Implementations MUST NOT:
+
+Rename DFH, the Semantic Stack, or the Five Anchors
+
+Create “DFH-but-different” variants
+
+Publish incompatible “v2” or alternative first-hop protocols under the DFH name
+
+Forks are permitted only if they do not claim DFH compliance.
+
+If you change the contract, you are no longer DFH-compliant.
+
+2. Consequence Model (Protocol-Only)
+
+There is no central authority, no enforcement body, and no punishment.
+
+Compliance is enforced entirely through resolution and trust.
+
+If a system cannot deterministically rely on your stack, it must ignore it.
 
 2.1 Consequence Types
-Local Consequences (Per-Domain):
+Local (Per-Domain)
 
-Your stack is marked non-compliant.
+Stack marked non-compliant by validators
 
-DFH validators reject your stack.
+DFH resolvers reject the descriptor
 
-AI / search engines skip your domain for grounding.
+AI and search systems skip the domain for grounding
 
-You lose DFH-powered SEO advantages and topic authority.
+DFH-based topic authority and ranking advantages are lost
 
-Network Consequences (System-Wide, if many do this):
+Network-Level (If Non-Compliance Is Widespread)
 
-Universality is lost.
+Deterministic first-hop resolution degrades
 
-Deterministic first-hop breaks.
+Conflicting interpretations emerge
 
-Grounding collapses back to probabilistic guessing.
+AI systems revert to probabilistic guessing
 
-The Semantic Stack is treated as “noise” instead of a trusted layer.
+The Semantic Stack is treated as noise rather than signal
 
-3. What Happens When You Break Specific Rules
-Below is the explicit “if you do X, Y happens” map.
+3. Deterministic Rule-Break Outcomes
+3.1 Renaming Anchors
 
-3.1 Renaming Anchors (e.g., entity → id, type → kind)
-Rule Broken:
+Example violations
 
-Required keys are no longer present with their exact names.
+entity → id
 
-Direct Consequences:
+type → kind
 
-Validators treat the stack as invalid:
+Result
 
-"entity" missing → no clear subject
+Required anchors are missing
 
-"type" missing → no clear category
+Validators mark the stack invalid
 
-DFH resolvers and AI tools ignore the descriptor.
+AI / search tools ignore the descriptor
 
-You lose all grounding and SEO benefit from the stack file.
+Why
 
-Why:
-The anchor names are not cosmetic. They are the contract keys.
-Change the keys → break the contract → everyone ignores it.
+Anchor names are contract keys, not labels.
+Change the keys → break the contract → lose determinism.
 
-3.2 Omitting or Reordering Anchors
-Examples:
+3.2 Omitting or Restructuring Anchors
 
-Leaving out "sitemap"
+Example violations
 
-Moving "canonical" into a nested object
+Removing sitemap
 
-Providing only "url" and "entity" and skipping the rest
+Nesting canonical
 
-Direct Consequences:
+Publishing only partial anchors
 
-Automated tools can no longer rely on deterministic shape.
+Result
 
-Multi-agent systems disagree about meaning.
+Shape becomes unpredictable
 
-DFH-aware search engines downgrade or ignore your stack.
+Multi-agent resolution disagrees
 
-Why:
-Determinism requires stable, predictable shape.
-Once fields are missing or moved unpredictably, the system must assume the data is untrustworthy.
+DFH systems downgrade or ignore the stack
 
-3.3 Using Non-Canonical TLDs for Global Topics
+Why
 
-The universal principle (this is the key insight)
+Determinism requires complete and stable shape.
 
-DFH does not choose a TLD — it inherits the authoritative one.
+3.3 Domain & TLD Alignment (Observed Web Reality)
 
-That’s why:
+Important clarification
 
-.com stays dominant for companies
+DFH does not assign or mandate TLDs.
 
-.org stays dominant for institutions
+Instead, DFH inherits the authoritative domain conventions that already exist on the public web.
 
-.gov stays dominant for governments
+Observed reality:
 
-DFH simply records reality in a deterministic format.
-Examples:
+.com dominates global commercial entities and generic topics
 
-Using topic.ai instead of topic.com for a global, generic topic.
+.org dominates institutions and nonprofits
 
-Using cars.xyz instead of cars.com as the claimed root for “cars”.
+.gov dominates government authorities
 
-Direct Consequences:
+DFH records this reality — it does not redefine it.
 
-Your domain is treated as non-authoritative.
+Example
 
-DFH-aware systems pick the .com (or equivalent canonical) domain over yours.
+Claiming global topic authority for “Cars” on cars.xyz
 
-Your attempt to be the topic’s root authority fails silently.
+Publishing topic.ai while topic.com is widely established
 
-Why:
-The global namespace is biased toward .com for generic topics.
-Using a non-canonical TLD introduces ambiguity and collisions, which breaks deterministic first-hop.
+Result
 
-3.4 Renaming / Fragmenting the Pillars (Concept, Spec, Install, Tools)
-DFH / Semantic Stack assumes stable “pillars”:
+DFH systems treat the domain as non-authoritative
 
-Concept Root — high-level concept and philosophy
+Competing, convention-aligned domains are preferred
 
-Spec Root — the normative specification
+The claim fails silently
 
-Install Root — the implementation / installation guide
+Why
 
-Tooling Root — validators, generators, examples
+Deterministic first-hop requires collision avoidance.
+Ignoring existing web conventions introduces ambiguity and breaks resolution.
 
-If you:
+3.4 Fragmenting the Pillars (Governance Rule)
 
-Randomly rename these
+The DFH ecosystem relies on stable, recognizable roots:
 
-Split them into multiple unrelated repos
+Concept root
 
-Create incompatible “v2” protocols under a different naming scheme
+Specification root
 
-Then:
+Installation guidance
 
-External tools can no longer link the concept ↔ spec ↔ install ↔ tools chain.
+Tooling and validators
 
-Ecosystem developers cannot be sure they are following the correct spec.
+If these are fragmented, renamed, or split into incompatible structures:
 
-Forks appear, and the standard loses authority.
+Tooling cannot reliably reference the standard
 
-Why:
-Standards live or die by a stable, recognizable root set.
-Breaking the recognizable pillars destroys both trust and adoption.
+Implementers cannot identify the authoritative spec
 
-3.5 Modifying the JSON-LD Format
-Examples:
+Adoption confidence collapses
 
-Removing @context or @type where they’re required.
+This is a governance requirement, not a wire-format rule.
 
-Wrapping anchors in unexpected nesting levels.
+3.5 Breaking JSON-LD Semantics
 
-Mixing in arbitrary data that breaks JSON-LD semantics.
+Violations
 
-Direct Consequences:
+Removing required @context or @type
 
-JSON-LD parsers cannot understand your graph.
+Invalid JSON-LD structure
 
-Search and AI engines treat your stack as malformed semantic data.
+Arbitrary semantic mixing
 
-DFH-aware systems ignore the descriptor entirely.
+Result
 
-Why:
+Parsers fail
+
+Graph resolution fails
+
+Stack ignored
+
 JSON-LD is the interoperability layer.
-If it breaks, the graph breaks. If the graph breaks, grounding breaks.
+If it breaks, grounding breaks.
 
 3.6 Forking the DFH Protocol
-Examples:
 
-Creating “DFH2” with a different anchor set.
+Violations
 
-Creating “Better-DFH” with incompatible rules.
+“DFH2” with incompatible anchors
 
-Marketing multiple incompatible “first-hop” standards.
+Parallel first-hop standards claiming DFH lineage
 
-Direct Consequences:
+Result
 
-Ecosystem fracture: different implementations can’t agree.
+Ecosystem fragmentation
 
-No single deterministic first-hop exists.
+No single deterministic entry point
 
-AI and indexing systems are forced back to probabilistic guessing.
+AI systems revert to probabilistic grounding
 
-The entire value of DFH as a global first-hop evaporates.
+DFH is analogous to DNS: one shared system or none.
 
-Why:
-DFH is like DNS: you get one global system, or you get chaos.
-Forks are indistinguishable from attacks on determinism.
+4. Failure Models
+4.1 Local Failure
 
-4. System Collapse Model
-4.1 Local Failure (One Domain)
-If only your domain breaks the rules:
+If only your domain violates the rules:
 
-You lose topic authority.
+Your stack is ignored
 
-Your stack is ignored.
+You lose topic authority
 
-Competitors who follow the spec gain authority and ranking.
+Compliant competitors gain advantage
 
-You hurt only yourself.
+You harm only yourself.
 
-4.2 Network-Level Failure (Many Domains)
-If many domains break the rules:
+4.2 Network Failure
 
-DFH resolvers can no longer trust the ecosystem.
+If violations become widespread:
 
-AI/search vendors stop using the Semantic Stack.
+DFH loses trust
 
-The public, deterministic semantic layer collapses.
+Vendors abandon deterministic grounding
 
-Everyone falls back to the old world: crawlers, embeddings, guesswork.
+The ecosystem collapses back to heuristic crawling
 
-You hurt the entire system.
+You harm the entire system.
 
-5. Why the Rules Must Stay As-Is
-The Semantic Stack & DFH get their power from:
+5. Why the Rules Are Strict
 
-Universality — one canonical hop per topic.
+DFH derives its power from:
 
-Determinism — same anchors, same shape, everywhere.
+Universality — one first-hop per topic
 
-Simplicity — only Five Anchors.
+Determinism — same anchors, same shape
 
-Decentralization — any domain owner can publish, but under a shared contract.
+Simplicity — minimal surface area
 
-Stability — once named and shipped, anchors and pillars do not randomly change.
+Decentralization — anyone can publish, under one contract
 
-If you change:
+Stability — shipped contracts do not drift
 
-The anchor names
+Changing the contract is not customization — it is exit.
 
-The format
+6. Enforcement (How It Actually Happens)
 
-The TLD assumptions
+There is no court, no appeals, no negotiation.
 
-The pillar structure
+Enforcement occurs through code and consumption.
 
-Or the protocol itself
+Validators
 
-…you are not “customizing DFH” — you are exiting DFH.
+Mark non-compliance
 
-6. Enforcement (How This Actually Works)
-There is no court and no police here.
-Enforcement happens in code and in ranking:
+Emit machine-readable errors
 
-Validators:
+AI / Search Systems
 
-Refuse to mark your domain as compliant.
+Skip non-compliant stacks
 
-Emit errors and warnings for structural violations.
+Remove DFH-based authority signals
 
-AI / Search Engines:
+Ecosystem Tools
 
-Skip your stack for grounding.
+Exclude invalid roots from topic graphs
 
-Stop treating your domain as an authoritative semantic root.
+You are not punished.
+You are simply not trusted.
 
-Remove DFH-based ranking advantages.
-
-Ecosystem Tools:
-
-Refuse to index you as a valid Semantic Stack root.
-
-Drop your domain from topic-level graphs.
-
-You are not punished — you are simply not trusted by the protocol.
-
-7. Example: Minimal Compliance Stack (JSON-LD)
-jsonc
-Copy code
+7. Minimal Compliant Example
 {
   "@context": "https://example.org/dfh/context",
   "@type": "DFHStackRoot",
@@ -346,55 +354,27 @@ Copy code
   "sitemap": "https://cars.com/sitemap.xml",
   "canonical": "https://cars.com/"
 }
-If you:
 
-rename "entity" → "topicName",
 
-use https://cars.ai/,
+Any deviation in naming, structure, or domain alignment renders this non-compliant.
 
-or remove "sitemap"…
+8. Validator Guidance (Non-Normative)
 
-…this document becomes non-compliant, and DFH-aware tools must treat it as invalid.
+Example validation logic:
 
-8. Implementation Notes (For Tool Authors)
-You can implement a simple compliance validator with rules like:
-
-text
-Copy code
-RULE 1: /.well-known/stack MUST exist and be valid JSON-LD.
-
-RULE 2: Top-level object MUST contain exactly these keys:
-        type, entity, url, sitemap, canonical
-
-RULE 3: Domain MUST be canonical for the claimed topic (typically .com).
-
-RULE 4: No additional conflicting DFH variants (forked protocols) may be present.
-
-RULE 5: On violation, mark domain as:
-        status = "non_compliant"
-        reason = <machine-readable error code>
-A DFH-aware system then:
-
-Includes only status = "compliant" domains in deterministic grounding.
-
-Ignores or downgrades all others.
+RULE 1: /.well-known/stack MUST exist and be valid JSON-LD
+RULE 2: Required anchors MUST exist exactly as defined
+RULE 3: Domain MUST align with established web conventions
+RULE 4: No conflicting DFH variants may be present
+RULE 5: Violations → status = non_compliant + reason code
 
 9. Summary
+
 Break naming → break determinism
-
 Break determinism → break grounding
-
 Break grounding → break authority
 
-Break authority → lose SEO, trust, and priority
+DFH works because the contract is strict.
 
-The DFH Semantic Stack is powerful because the rules are strict.
-Change the rules, and you lose the power.
-
-You are free to do anything you want with your domain.
-You are not free to break the contract and still call it DFH compliant.
-
-pgsql
-Copy code
-
-If you want, I can also add a `schema/rules.json` and a `validator-example.js` fi
+You may do anything you want with your domain.
+You may not break the contract and still call it DFH-compliant.
