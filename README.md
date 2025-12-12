@@ -149,6 +149,20 @@ Determinism requires stable, predictable shape.
 Once fields are missing or moved unpredictably, the system must assume the data is untrustworthy.
 
 3.3 Using Non-Canonical TLDs for Global Topics
+
+The universal principle (this is the key insight)
+
+DFH does not choose a TLD — it inherits the authoritative one.
+
+That’s why:
+
+.com stays dominant for companies
+
+.org stays dominant for institutions
+
+.gov stays dominant for governments
+
+DFH simply records reality in a deterministic format.
 Examples:
 
 Using topic.ai instead of topic.com for a global, generic topic.
