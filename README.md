@@ -7,6 +7,11 @@ License: MIT
 
 This repository defines the compliance, validation, and consequence model for the DFH Semantic Stack.
 
+Shape breaks → determinism breaks
+Determinism breaks → grounding breaks
+Grounding breaks → authority collapses
+
+
 Non-criminal — no legal, financial, or punitive enforcement
 
 Protocol-level only — consequences emerge from loss of trust and resolution
