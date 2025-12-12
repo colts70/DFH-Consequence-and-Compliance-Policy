@@ -11,6 +11,9 @@ Shape breaks → determinism breaks
 Determinism breaks → grounding breaks
 Grounding breaks → authority collapses
 
+Normative Language
+The keywords MUST, MUST NOT, SHOULD, and MAY are to be interpreted as described in RFC 2119.
+
 
 Non-criminal — no legal, financial, or punitive enforcement
 
